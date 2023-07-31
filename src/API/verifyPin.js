@@ -1,4 +1,4 @@
-export default async function verigyPin(email, otp) {
+export default async function verifyPin(email, otp) {
   let res = await fetch("https://cart-api.teamrabbil.com/api/verify-login", {
     method: "POST",
     headers: {

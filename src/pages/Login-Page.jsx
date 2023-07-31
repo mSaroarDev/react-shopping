@@ -7,12 +7,10 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Assuming email is defined and contains the correct value
     userLogin(email)
       .then((data) => {
         if (data.msg === "success") {
           navigate("/otp?email=" + email);
-          //   console.log(data);
         } else {
           console.log("Login failed: ", data?.msg);
         }
