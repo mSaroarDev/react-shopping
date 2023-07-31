@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Product from "./Product";
 import productList from "../API/FetchAPI";
+import Loader from "./Loader";
 
 const ProductList = () => {
   const [product, setProduct] = useState([]);
@@ -14,11 +15,20 @@ const ProductList = () => {
 
   let output;
   if (error) {
-    output = <div>Problem Loading Products</div>;
+    output = (
+      <div className="h-screen w-screen flex items-center justify-center text-center mt-[-70px]">
+        {/* <div>Problem Loading Products</div> */}
+        <Loader />
+      </div>
+    );
   } else if (product.length > 0) {
     output = product.map((item) => <Product key={item.id} product={item} />);
   } else {
-    output = <div>There was no products!</div>;
+    output = (
+      <div className="h-screen w-screen flex items-center justify-center text-center mt-[-70px]">
+        <Loader />
+      </div>
+    );
   }
 
   return (
