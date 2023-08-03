@@ -34,6 +34,22 @@ const ProductList = () => {
       .catch((err) => console.log(err));
   };
 
+  const calculateTotalPrice = () => {
+    const priceString = items.reduce((price, totalPrice) => {
+      const priceWithComma = totalPrice.product.price;
+      const priceWithoutComma = priceWithComma.replace(/,/g, "");
+      const priceInteger = parseInt(priceWithoutComma);
+
+      return price + priceInteger;
+    }, 0);
+
+    return priceString.toLocaleString();
+  };
+
+  const countCartItem = () => {
+    return items.length;
+  };
+
   return (
     <div className="container z-10 mx-auto my-12 p-9">
       <div className="grid grid-cols-1 mt-2 md:grid-cols-1 lg:grid-cols-3 gap-3">
@@ -47,8 +63,8 @@ const ProductList = () => {
 
         <div className="card shadow-xl h-44 w-100 bg-white">
           <div className="card-body">
-            <h2 className="card-title">Total Item: 10</h2>
-            <h6>Total Price: $1,000</h6>
+            <h2 className="card-title">Total Item: {countCartItem()}</h2>
+            <h6>Total Price: ${calculateTotalPrice()}</h6>
             <div className="card-actions">
               <button className="btn btn-sm my-4 btn-primary btn-outline">
                 Check out
