@@ -11,9 +11,7 @@ const ProductList = () => {
     fetchCart()
       .then((data) => {
         if (data?.msg === "success") {
-          //   setItems(data);
           setItems(data?.data);
-          //   console.log(items);
         }
       })
       .catch((err) => {

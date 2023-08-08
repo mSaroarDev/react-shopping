@@ -1,6 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 const AppNav = () => {
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <div className="navbar fixed top-0 z-50 px-20 drop-shadow-lg bg-base-100">
       <div className="flex-1">
@@ -29,7 +37,13 @@ const AppNav = () => {
             className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a onClick={() => {}}>Logout</a>
+              <a
+                onClick={() => {
+                  logOut;
+                }}
+              >
+                Logout
+              </a>
             </li>
           </ul>
         </div>
